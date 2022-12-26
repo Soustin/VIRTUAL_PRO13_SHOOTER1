@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Shooting Game in Virtual Reality</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src="./shoot.js"></script>
+    </head>
+    <body>
+        <a-scene id="scene">
+            <a-assets>
+                <a-asset-item
+                id="bowling-pin"
+                src="./models/bowling_pin/scene.gltf"></a-asset-item>
+                </a-assets>
+                <a-asset-item
+                id="arms"
+                src="./models/fps_arms/scene.gltf"></a-asset-item>
+                <a-asset-item
+                id="bowling-alley"
+                src="./models/bowling_alley/scene.gltf"></a-asset-item>
+                <a-asset-item
+                id="bowling-ball"
+                src="./models/bowling_ball.glb"></a-asset-item>
+                <img id="sky" src="./models/assets/Equitriangular Sky.jpg" />
+                <img id="room" src="./models/assets/room_scifi-transformed.jpeg" />
+            </a-assets>
+                
+            <a-light type="directional" position="0 0 0" rotation="-90 0 0" target="#directionaltarget">
+                <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
+            </a-light>
+            <a-light type="ambient" position="0 0 0" rotation="-90 0 0">
+            </a-light>
+            <a-entity
+                id="camera"
+                camera
+                position="0 1.6 0"
+                wasd-controls
+                look-controls="pointerLockEnabled: true">
+                <a-entity
+                    id="hands"
+                    gltf-model="#arms"
+                    position="0 -4.4 3"
+                    rotation="0 180 0"
+                    scale="0.5 0.5 0.5">
+                </a-entity>
+                <a-cursor></a-cursor>
+            </a-entity>
+            <a-sky src="#room"></a-sky>
+            <a-plane
+                id="ground"
+                repeat="5 5"
+                position="0 -17 0"
+                rotation="-90 0 0"
+                height="200"
+                width="200"
+                color="#CC7722"
+                static-body
+                visible="true">
+            </a-plane>
+            <a-plane
+                id="ground"
+                repeat="5 5"
+                position="0 1.5 -3.85"
+                rotation="-90 0 0"
+                height="1.5"
+                width="1.5"
+                color="#CC7722"
+                static-body
+                visible="true">
+            </a-plane>
+            <!-- <a-entity position="0 0.5 -4" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-alley"></a-entity> -->
+            <a-box position="-0.5 1.5 -4" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-pin"></a-box>
+            <a-box position="0 1.5 -4" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-pin"></a-box>
+            <a-box position="0.5 1.5 -4" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-pin"></a-box>
+            <a-box position="-0.25 1.5 -3.85" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-pin"></a-box>
+            <a-box position="0.25 1.5 -3.85" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-pin"></a-box>
+            <a-box position="0 1.5 -3.7" color="#fff" depth="5" height="5" width="5" gltf-model="#bowling-pin"></a-box>
+        </a-scene>
+    </body>
+</html>
